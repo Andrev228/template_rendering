@@ -10,8 +10,8 @@ export function renderElement(block) {
         we may also check children to be string,
         but it is not necessary in our case
       */
-      (block.children ? block.children : []).map(cld => renderElement(cld)))
-    };
+      (block.children ? block.children : []).map(renderElement))
+    }
   
   return null;
 }

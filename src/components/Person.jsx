@@ -28,13 +28,13 @@ const PersonName = styled.span`
     nevertheless the value is updated accordung to redux-devtools
 */
 
-export default function Person({ firstName, lastName, avatar, onClick }) {
+export default function Person({ firstName = {}, lastName = {}, avatar = {}, onClick }) {
     const dispatch = useDispatch();
     const stateReferenceId = _get(onClick, 'arguments[0].value', '');
 
     return (
         <PersonWrapper>
-            <PersonAvatar src={avatar.value} alt="avatar" />
+            {avatar.value && <PersonAvatar src={avatar.value} alt="avatar" />}
             <PersonName>{firstName.value} {lastName.value}</PersonName>
             <button onClick={() => dispatch(onClick.value(stateReferenceId))}>Increment score</button>
         </PersonWrapper>);
